@@ -5,7 +5,7 @@
             <h1>Google Developer Student Clubs</h1>
             <h3>University of San Agustin</h3>
         </Block>
-        <Block dark :w="2" :h="2">
+        <Block :w="2" :h="2">
             <div>
                 <h3>02 - About GDSC USA</h3>
                 <p>GDSC USA is a community group for Augustinian students interested in growing their technical knowledge and applying it to real life situations to create solutions for local businesses and their community.</p>
@@ -33,9 +33,13 @@
                 </div>
             </Slider>
         </Block>
-        <Block dark>
+        <Block>
             <h2>Meet Our Team!</h2>
             <Deck>
+                <Year name="2024-2025">
+                    <Card name="" />
+                    <Card name="" />
+                </Year>
             </Deck>
         </Block>
         <Block>
