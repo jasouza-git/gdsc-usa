@@ -1,4 +1,5 @@
 <script setup lang="ts">
+    const block = ref<HTMLDivElement | null>(null);
     const info = withDefaults(defineProps<{
         dark?: boolean;
         theme?: string;
@@ -10,7 +11,6 @@
         w: 0,
         h: 0,
     });
-    const block = ref<HTMLDivElement | null>(null);
     function stylize() {
         let style:any = {};
         if (info.w || info.h) Object.assign(style, {
@@ -29,7 +29,6 @@
         });
         return style;
     }
-
     onMounted(() => {
         if (!block.value) return;
         Array(...block.value.querySelectorAll('[w],[h]')).forEach(d => {

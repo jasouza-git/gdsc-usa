@@ -12,7 +12,23 @@
         title: info.title,
         ogTitle: 'Community group',
         ogImage: '@/assets/logo.png'
-    })
+    });
+    /* ----- RECORD MOUSE FOR LATER COMPONENTS ----- */
+    let mouse = ref<number[]>([-1,-1,-1,-1]); // [currentXY, draggedXY]
+    provide('mouse', mouse);
+    onMounted(() => {
+        document.addEventListener('mousedown', e => {
+            mouse.value = [e.clientX, e.clientY, e.clientX, e.clientY];
+        });
+        document.addEventListener('mousemove', e => {
+            mouse.value[0] = e.clientX;
+            mouse.value[1] = e.clientY;
+        });
+        document.addEventListener('mouseup', e => {
+            mouse.value[2] = -1;
+            mouse.value[3] = -1;
+        });
+    });
 </script>
 <style lang="sass">
     @font-face
