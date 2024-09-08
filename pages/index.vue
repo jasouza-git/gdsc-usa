@@ -10,13 +10,13 @@
                 <h3>02 - About GDSC USA</h3>
                 <p>GDSC USA is a community group for Augustinian students interested in growing their technical knowledge and applying it to real life situations to create solutions for local businesses and their community.</p>
             </div>
-            <Bubble>
-                <img src="/pop00.png" />
-            </Bubble>
-            <Bubble>
-                <img src="/pop02.png" />
-                <img src="/pop01.png" />
-            </Bubble>
+            <Bubbles>
+                <Bubble fill="/pop00.png" />
+            </Bubbles>
+            <Bubbles>
+                <Bubble fill="/pop02.png" />
+                <Bubble fill="/pop01.png" />
+            </Bubbles>
             <div>
                 <h3>03 - What We Do</h3>
                 <p>As a program supported by Google Developers, students from all courses and year levels can join GDSC USA. We arrange webinars, hold workshops, and engage in community building to help kickstart careers!</p>
@@ -25,6 +25,7 @@
         <Block>
             <h2>04 - GDSC Event Gallery</h2>
             <p>We arrange webinars, hold workshops, and engage in community building to help kickstart careers!</p>
+            <input v-for="n in 5" :value="Math.random()" />
             <Slider>
                 <div>
                     <img src="" />
@@ -45,10 +46,10 @@
         <Block>
             <img src="/title.png" width="200" />
             <h3>Be Part of the Community!</h3>
-            <Bubble>
+            <Bubbles>
                 <img src="" />
                 <img src="" />
-            </Bubble>
+            </Bubbles>
             <Form></Form>
         </Block>
     </GDSC>

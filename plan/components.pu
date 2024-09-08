@@ -1,0 +1,28 @@
+@startuml
+[<b>Titlecard</b>\nwhite?:boolean] as Titlecard
+[<b>GDSC</b>\ntitle?:string\ntransparent?:boolean] as GDSC
+[<b>Block</b>\nimg?string\nw?:number\nh?:number] as Block
+[<b>Bubble</b>\namount?:number\ncolors:Colors\nimgOff?:number\nbubOff?:number\ndurVar?:number\ndurOff?:number] as Bubble
+[<b>Deck</b><i>(Incomplete)</i>] as Deck
+[<b>Form</b><i>(Incomplete)</i>] as Form
+[<b>Slider</b><i>(Incomplete)</i>] as Slider
+
+Titlecard --> GDSC : uses
+GDSC --> Block : includes
+Block --> Bubble : includes
+Block --> Deck : includes
+Block --> Form : includes
+Block --> Slider : includes
+
+note right of Titlecard
+  Displays the GDSC Logo,
+  Name, and School
+end note
+
+note right of GDSC
+  The main website
+  of GDSC
+end note
+
+footer These are the components located at "/components"
+@enduml

@@ -8,5 +8,6 @@ npm run dev
 # Build
 npm run build
 ```
-## Components
--\
+## Plans
+- Components
+  ![](plan/components.svg)
