@@ -34,14 +34,13 @@
                 </div>
             </Slider>
         </Block>
-        <Block>
+        <Block height="auto">
             <h2>Meet Our Team!</h2>
             <Deck>
                 <Year name="2024-2025">
-                    <Card name="" />
-                    <Card name="" />
                 </Year>
             </Deck>
+            <div style="height: 4000px;" class="bg-red"></div>
         </Block>
         <Block>
             <img src="/title.png" width="200" />

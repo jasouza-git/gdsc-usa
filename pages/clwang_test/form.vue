@@ -6,5 +6,9 @@ const handleFormSubmit = (values: any) => {
 </script>
 
 <template>
-    <Form @submit="handleFormSubmit" class="mx-auto"></Form>
+    <v-container>
+        <v-row>
+            <Form @submit="handleFormSubmit" class="mx-auto"></Form>
+        </v-row>
+    </v-container>
 </template>
