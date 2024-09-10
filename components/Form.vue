@@ -93,10 +93,10 @@ const hintGroups = [
 </script>
 
 <template>
-    <v-card class="px-4 pb-8 pt-6" style="border-radius: 50px;" width="500" elevation="12">
+    <v-card class="px-2 pb-6 pt-3" style="border-radius: 40px;" width="400" elevation="12">
         <v-form @submit.prevent="submit" ref="form">
             <div class="my-0" v-for="(indexes, j) in [[0, 3], [3, 6], [6, 8]]" :key="j">
-                <v-card-title class="py-0 mt-0 mb-2" style="font-size: 16px; font-weight: 900; color: black;">{{
+                <v-card-title class="py-0 mt-0 mb-2" style="font-size: 13px; font-weight: 900; color: black;">{{
                     titles[j] }}</v-card-title>
                 <v-row class="my-0 mx-1" v-for="(hints, i) in hintGroups.slice(indexes[0], indexes[1])" :key="i">
                     <v-col class="my-0 pt-0 pb-0 px-2" v-for="(hint, index) in hints" :key="index"
@@ -124,9 +124,40 @@ const hintGroups = [
                 </v-row>
             </div>
             <v-row class="mt-0">
-                <v-btn class="text-none mx-auto bg-red" color="white" min-width="130" @click="submit"
+                <v-btn class="text-none mx-auto bg-red" size="small" color="white" min-width="130" @click="submit"
                     rounded>Apply</v-btn>
             </v-row>
         </v-form>
     </v-card>
 </template>
+
+<style lang="css">
+.v-input__details {
+    padding-top: 2px;
+    padding-bottom: 1px;
+    align-items: start;
+    min-height: 10px;
+}
+.v-messages__message {
+    font-size: 10px;
+}
+.v-text-field .v-field {
+    font-size: 12px;
+}
+.v-label {
+    font-size: 12px;
+}
+
+.v-field--center-affix .v-label.v-field-label {
+    top: 16px
+}
+
+.v-input__control {
+    height: 32px
+}
+
+.v-field__input {
+    bottom: -3px;
+    position: absolute;
+}
+</style>
