@@ -50,7 +50,7 @@
                 <img src="" />
                 <img src="" />
             </Bubbles>
-            <Form></Form>
+            <!-- <Form></Form> -->
         </Block>
     </GDSC>
 </template>
