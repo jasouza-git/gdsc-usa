@@ -9,14 +9,14 @@
         durOff?:number,                                 // Transition Offset (miliseconds)
     }>(), {
         amount: 15,
-        // @ts-ignore
+        // @ts-ignore - A ts-bug
         colors:['red','yellow','green','blue'],
-        imgOff: 50,
+        imgOff: 5,
         bubOff: 20,
         durVar: 500,
         durOff: 250,
     });
-    let area = ref<number[]>([Math.random()*Math.PI, 0]); // Random Angle Offset, Number of focused bubbles
+    let area = ref<number[]>([Math.random()*Math.PI, 0, info.imgOff]); // Random Angle Offset, Number of focused bubbles
     provide('area', area);
     let observer:IntersectionObserver|null = null;
     let bubbles = ref<HTMLDivElement|null>(null);

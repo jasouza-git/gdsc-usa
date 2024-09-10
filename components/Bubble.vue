@@ -46,8 +46,8 @@
         if (bubble.value && dt < 1) {
             // Bubble is focused
             if (!info.back && area && area.value[1] > 1) {
-                focus.value.x = Math.cos(focus.value.n*2*Math.PI/area.value[1]+area.value[0])*5;
-                focus.value.y = Math.sin(focus.value.n*2*Math.PI/area.value[1]+area.value[0])*5;
+                focus.value.x = Math.cos(focus.value.n*2*Math.PI/area.value[1]+area.value[0])*area.value[2];
+                focus.value.y = Math.sin(focus.value.n*2*Math.PI/area.value[1]+area.value[0])*area.value[2];
             }
             // User is dragging Bubble
             if (drag.value.length && mouse && mouse.value[2] == -1) {
