@@ -2,17 +2,23 @@
 [<b>Titlecard</b>\nwhite?:boolean] as Titlecard
 [<b>GDSC</b>\ntitle?:string\ntransparent?:boolean] as GDSC
 [<b>Block</b>\nimg?string\nw?:number\nh?:number] as Block
-[<b>Bubble</b>\namount?:number\ncolors:Colors\nimgOff?:number\nbubOff?:number\ndurVar?:number\ndurOff?:number] as Bubble
+[<b>Bubbles</b>\namount?:number\ncolors:Colors\nimgOff?:number\nbubOff?:number\ndurVar?:number\ndurOff?:number] as Bubbles
 [<b>Deck</b><i>(Incomplete)</i>] as Deck
 [<b>Form</b><i>(Incomplete)</i>] as Form
 [<b>Slider</b><i>(Incomplete)</i>] as Slider
+[<b>Bubble</b>] as Bubble
+[<b>Card</b>] as Card
+[<b>DateField</b>] as DateField
 
 Titlecard --> GDSC : uses
 GDSC --> Block : includes
-Block --> Bubble : includes
+Block --> Bubbles : includes
 Block --> Deck : includes
 Block --> Form : includes
 Block --> Slider : includes
+Bubble --> Bubbles : uses
+DateField --> Form : uses
+Card --> Deck : uses
 
 note right of Titlecard
   Displays the GDSC Logo,
