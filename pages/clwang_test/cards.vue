@@ -40,7 +40,7 @@ onMounted(() => {
     <v-container>
       <v-row >
         <v-col v-for="(member, index) in members" :key="index">
-            <Deck class="mx-auto" :member="member"></Deck>
+            <Card class="mx-auto" :member="member"></Card>
         </v-col>
       </v-row>
     </v-container>
