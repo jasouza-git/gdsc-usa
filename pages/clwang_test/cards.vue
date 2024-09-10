@@ -98,7 +98,7 @@ const members = ref([
 
             <template v-slot:loader>
                 <v-row>
-                    <v-col v-for="(_, k) in [0, 1, 2, 3, 4, 5]" :key="k" cols="12" sm="6" xl="3">
+                    <v-col v-for="(_, k) in [0, 1, 2, 3, 4, 5]" :key="k">
                         <v-skeleton-loader style="border-radius: 10px;" :elevation="12" class="border mx-auto" width="320" height="190" type="list-item-avatar-three-line, paragraph"></v-skeleton-loader>
                     </v-col>
                 </v-row>
