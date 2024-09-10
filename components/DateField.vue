@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<{
     label: "",
     variant: "underlined",
 })
-
+// @ts-ignore
 const rs = ref<ValidationRule$1[]>([
     (v: string) => {
         if (!props.rules) return true
