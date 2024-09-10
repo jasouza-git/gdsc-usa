@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import defaultAvatar from '~/assets/avatar.png'; 
+import defaultAvatar from '~/assets/avatar.png';
 const props = defineProps<{
     member: {
         name: string,
@@ -22,13 +22,12 @@ const goToLink = (url: string) => {
     <v-card width="320" elevation="12" style="border-radius: 10px;">
         <v-row no-gutters class="py-1">
             <v-col cols="auto" class="d-flex justify-center align-center">
-                <v-avatar class="ma-2 mr-0" :image="member.avatar || defaultAvatar" size="125"></v-avatar>
+                <v-avatar class="ma-2 ml-3 mr-0" :image="member.avatar || defaultAvatar" size="125"></v-avatar>
             </v-col>
             <v-col>
                 <v-row no-gutters class="d-flex align-center mt-1">
                     <v-col class="mr-2">
-                        <v-card-title
-                            class="my-0 py-0 name-overflow"
+                        <v-card-title class="my-0 py-0 name-overflow"
                             style="font-size: 15px; font-weight: 400; color: black;">
                             {{ member.name }}
                         </v-card-title>
@@ -37,9 +36,7 @@ const goToLink = (url: string) => {
                         <v-img src="~assets/logo.png" width="25"></v-img>
                     </v-col>
                 </v-row>
-                <v-card-title
-                    class="my-0 pt-0 name-overflow"
-                    style="font-size: 15px; font-weight: 900; color: black;">
+                <v-card-title class="my-0 pt-0 name-overflow" style="font-size: 15px; font-weight: 900; color: black;">
                     {{ member.position }}
                 </v-card-title>
                 <v-card-text style="font-size: 10px; font-weight: 400; color: black;">
@@ -48,7 +45,7 @@ const goToLink = (url: string) => {
             </v-col>
         </v-row>
 
-        <v-card-actions :class="`${member.color || 'bg-red' } small-card-actions d-flex justify-end pa-0 ma-0`">
+        <v-card-actions :class="`${member.color || 'bg-red'} small-card-actions d-flex justify-end pa-0 ma-0`">
             <v-btn icon v-if="member.fbLink" @click="goToLink(member.fbLink ?? '')">
                 <v-icon size="small">mdi-facebook</v-icon>
             </v-btn>

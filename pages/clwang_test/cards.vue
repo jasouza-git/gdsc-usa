@@ -33,16 +33,15 @@ const members = [
 onMounted(() => {
     console.log(members)
 })
-  
+
 </script>
 
 <template>
     <v-container>
-      <v-row >
-        <v-col v-for="(member, index) in members" :key="index">
-            <Card class="mx-auto" :member="member"></Card>
-        </v-col>
-      </v-row>
+        <v-row>
+            <v-col v-for="(member, index) in members" :key="index">
+                <Card class="mx-auto" :member="member"></Card>
+            </v-col>
+        </v-row>
     </v-container>
 </template>
-  
