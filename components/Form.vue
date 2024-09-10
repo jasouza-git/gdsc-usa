@@ -94,32 +94,34 @@ const hintGroups = [
 
 </script>
 
-<style setup lang="css">
-.v-input__details {
+<style lang="css" scoped>
+::v-deep(.v-input__details) {
     padding-top: 2px;
     padding-bottom: 1px;
     align-items: start;
     min-height: 10px;
 }
-.v-messages__message {
+::v-deep(.v-messages__message) {
     font-size: 10px;
 }
-.v-text-field .v-field {
-    font-size: 12px;
-}
-.v-label {
+
+::v-deep(.v-field__input) {
     font-size: 12px;
 }
 
-.v-field--center-affix .v-label.v-field-label {
-    top: 16px
+::v-deep(.v-label.v-field-label) {
+    font-size: 12px;
 }
 
-.v-input__control {
+::v-deep(.v-text-field .v-field .v-label.v-field-label--floating) {
+    font-size: 9px;
+}
+
+::v-deep(.v-input__control) {
     height: 32px
 }
 
-.v-field__input {
+::v-deep(.v-field__input)  {
     bottom: -3px;
     position: absolute;
 }
