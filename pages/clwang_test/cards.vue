@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { I_CardColors, alterColors, randomColor } from '../../components/ColorFunctions.ts';
+import {alterColors, randomColor } from '../../components/ColorFunctions.ts';
 const loading = ref(true)
 const colorLightenLvl = 4
-var cardColors = alterColors(I_CardColors, "lighten", colorLightenLvl)
+var cardColors = alterColors("lighten", colorLightenLvl)
 const members = ref([
     {
         name: "Member Name",
@@ -66,7 +66,7 @@ const members = ref([
 ])
 const getRandomColor = () => {
     const res = randomColor(cardColors)
-    if (res.remainingColors.length === 0) { cardColors = alterColors(I_CardColors, "lighten", colorLightenLvl) }
+    if (res.remainingColors.length === 0) { cardColors = alterColors("lighten", colorLightenLvl) }
     else { cardColors = res.remainingColors }
     return res.color
 }

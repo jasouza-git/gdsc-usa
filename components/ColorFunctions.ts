@@ -20,7 +20,7 @@ export const I_CardColors: Color[] = [
     "brown"
 ]
 
-export function alterColors(colors: Color[], para: ColorAdjustParas = ColorAdjustParas.lighten, lvl: number = 5): Color[] {
+export function alterColors(para: ColorAdjustParas = ColorAdjustParas.lighten, lvl: number = 5): Color[] {
     return I_CardColors.map((color) => color + "-" + para + "-" + lvl)
 }
 
