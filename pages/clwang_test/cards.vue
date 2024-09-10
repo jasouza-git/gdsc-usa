@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { I_CardColors, alterColors, randomColor } from '../../components/ColorFunctions.ts';
 const loading = ref(true)
+const colorLightenLvl = 4
+var cardColors = alterColors(I_CardColors, "lighten", colorLightenLvl)
 const members = ref([
     {
         name: "Member Name",
@@ -61,7 +64,12 @@ const members = ref([
         itLink: "https://www.facebook.com/chenlin.wang.16100/"
     }
 ])
-
+const getRandomColor = () => {
+    const res = randomColor(cardColors)
+    if (res.remainingColors.length === 0) { cardColors = alterColors(I_CardColors, "lighten", colorLightenLvl) }
+    else { cardColors = res.remainingColors }
+    return res.color
+}
 </script>
 
 <template>
@@ -99,7 +107,7 @@ const members = ref([
             <template v-slot:loader>
                 <v-row>
                     <v-col v-for="(_, k) in [0, 1, 2, 3, 4, 5]" :key="k">
-                        <v-skeleton-loader style="border-radius: 10px;" :elevation="12" class="border mx-auto" width="320" height="190" type="list-item-avatar-three-line, paragraph"></v-skeleton-loader>
+                        <v-skeleton-loader :color="getRandomColor()" style="border-radius: 10px;" :elevation="12" class="border mx-auto" width="320" height="190" type="list-item-avatar-three-line, paragraph"></v-skeleton-loader>
                     </v-col>
                 </v-row>
             </template>
