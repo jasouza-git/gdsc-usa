@@ -112,7 +112,7 @@ const decideFormWidth = () => {
             <v-container fluid min-height="500px">
                 <div style="height: 50px"></div>
                 <v-row class="mb-8">
-                    <img class="mx-auto" src="/title.png" width="200" />
+                    <img class="mx-auto" src="/title.png" :width="decideFormWidth() / 2" />
                 </v-row>
                 <v-row class="mb-8">
                     <h3 class="mx-auto">Be Part of the Community!</h3>
