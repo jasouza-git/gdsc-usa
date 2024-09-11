@@ -127,7 +127,7 @@ const hintGroups = [
 }
 </style>
 <template>
-    <v-card class="px-2 pb-6 pt-3" style="border-radius: 40px;" width="400" elevation="12">
+    <v-card border="opacity-100 sm" class="px-2 pb-8 pt-3" style="border-radius: 40px;" width="400" elevation="12">
         <v-form @submit.prevent="submit" ref="form">
             <div class="my-0" v-for="(indexes, j) in [[0, 3], [3, 6], [6, 8]]" :key="j">
                 <v-card-title class="py-0 mt-0 mb-2" style="font-size: 13px; font-weight: 900; color: black;">{{
