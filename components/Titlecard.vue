@@ -35,7 +35,7 @@
 </style>
 <template>
     <div class="gdsc_logo mr-3" :style="$vuetify.display.mdAndUp ? 'width: 300px' : ''" :class="white ? 'white': ''">
-        <img src="/favicon.png" />
+        <img  src="/favicon.png" />
         <h1 v-if="$vuetify.display.mdAndUp">Google Developer Student Clubs</h1>
         <h2 v-if="$vuetify.display.mdAndUp">University of San Agustin</h2>
     </div>

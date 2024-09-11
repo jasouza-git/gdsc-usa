@@ -1,6 +1,14 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify';
+
 const formRegister = (value: any) => {
     console.log(value)
+}
+
+const decideFormWidth = () => {
+    const w =  useDisplay().width.value
+    return w < 400 ? 340 :
+    useDisplay().smAndDown.value ? 420 : 530
 }
 </script>
 
@@ -118,7 +126,7 @@ const formRegister = (value: any) => {
                     </v-col>
                     <v-col>
                         <h5 class="mb-2 mx-auto">Membership</h5>
-                        <Form @submit="formRegister" class="mx-auto"></Form>
+                        <Form :width="decideFormWidth()" @submit="formRegister" class="mx-auto"></Form>
                     </v-col>
                 </v-row>
             </v-container>

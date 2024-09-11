@@ -13,7 +13,7 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-    <v-container fluid :style="img ? `background-color: #12181ADD; background-image: url(${img})` : ''"
+    <v-container class="fill-width" fluid :style="img ? `background-color: #12181ADD; background-image: url(${img})` : ''"
         :class="'py-0 px-0 fill-width ' + (img ? 'bg-image ' : '') + (dark ? 'i-bg-gray text-white' : 'bg-white text-black')">
         <div v-if="icon" :class="'border-circle ' + (dark ? 'i-bg-gray' : 'bg-white')">
             <v-img class="icon mx-auto" :src="dark ? favicon_white : favicon_dark"></v-img>
