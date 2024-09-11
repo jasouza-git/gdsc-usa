@@ -7,7 +7,6 @@
 </script>
 <style lang="sass">
     .gdsc_logo
-        width: 300px
         height: 30px
         margin-left: 10px
         display: grid
@@ -35,9 +34,9 @@
             color: #fff
 </style>
 <template>
-    <div class="gdsc_logo" :class="white ? 'white': ''">
-        <img src="/favicon.png" />
-        <h1>Google Developer Student Clubs</h1>
-        <h2>University of San Agustin</h2>
+    <div class="gdsc_logo mr-3" :style="$vuetify.display.mdAndUp ? 'width: 300px' : ''" :class="white ? 'white': ''">
+        <img  src="/favicon.png" />
+        <h1 v-if="$vuetify.display.mdAndUp">Google Developer Student Clubs</h1>
+        <h2 v-if="$vuetify.display.mdAndUp">University of San Agustin</h2>
     </div>
 </template>
