@@ -65,7 +65,7 @@
             <v-spacer v-if="$vuetify.display.smAndUp"></v-spacer>
             <!-- NAVIGATION BUTTONS -->
             <v-btn-toggle :density="$vuetify.display.mdAndUp ? 'default' : 'compact'" color="primary" manditory dark v-model="active_page">
-                <v-btn :style="$vuetify.display.mdAndUp ? '' : 'font-size: 10px'" v-for="page in pages" :key="page" :value="page" depressed>{{ page }}</v-btn>
+                <v-btn :style="$vuetify.display.mdAndUp ? '' : 'font-size: 10px'" v-for="page in pages" :key="page" :value="page" depressed>{{ $vuetify.display.width < 500 ? Array.from(page)[0] : page }}</v-btn>
             </v-btn-toggle>
             <v-spacer v-if="$vuetify.display.mdAndUp"></v-spacer>
             <v-spacer></v-spacer>

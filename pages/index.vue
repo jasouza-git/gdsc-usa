@@ -7,7 +7,7 @@ const formRegister = (value: any) => {
 
 const decideFormWidth = () => {
     const w =  useDisplay().width.value
-    return w < 400 ? 340 :
+    return w < 430 ? 340 :
     useDisplay().smAndDown.value ? 420 : 530
 }
 </script>
