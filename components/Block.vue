@@ -5,6 +5,7 @@ import favicon_white from "~/assets/favicon_white.png"
 const props = withDefaults(defineProps<{
     dark?: boolean,
     icon?: boolean,
+    img?: string
 }>(), {
     dark: false,
     icon: true
@@ -12,7 +13,8 @@ const props = withDefaults(defineProps<{
 </script>
 
 <template>
-    <div :class="'py-0 px-0 fill-width ' + (dark ? 'i-bg-gray text-white' : 'bg-white text-black')">
+    <v-container fluid :style="img ? `background-color: #12181ADD; background-image: url(${img})` : ''"
+        :class="'py-0 px-0 fill-width ' + (img ? 'bg-image ' : '') + (dark ? 'i-bg-gray text-white' : 'bg-white text-black')">
         <div v-if="icon" :class="'border-circle ' + (dark ? 'i-bg-gray' : 'bg-white')">
             <v-img class="icon mx-auto" :src="dark ? favicon_white : favicon_dark"></v-img>
         </div>
@@ -23,10 +25,18 @@ const props = withDefaults(defineProps<{
             </v-col>
         </v-row>
         <!-- <div style="height: 50px"></div> -->
-    </div>
+    </v-container>
 </template>
 
 <style lang="css" scoped>
+.bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay;
+    color: #fff;
+}
+
 .border-circle {
     position: absolute;
     left: 50%;

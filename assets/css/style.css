@@ -1,5 +1,5 @@
 h1 {
-    font-size: 28px;
+    font-size: 34px;
 }
 
 h2 {
@@ -18,13 +18,17 @@ h5 {
     font-size: 20px;
 }
 
+h6 {
+    font-size: 16px;
+}
+
 p {
     font-size: 16px;
 }
 
 @media (min-width: 600px) {
     h1 {
-        font-size: 32px;
+        font-size: 38px;
     }
 
     h2 {
@@ -43,6 +47,10 @@ p {
         font-size: 24px;
     }
 
+    h6 {
+        font-size: 22px;
+    }
+
     p {
         font-size: 18px;
     }
@@ -50,7 +58,7 @@ p {
 
 @media (min-width: 960px) {
     h1 {
-        font-size: 36px;
+        font-size: 45px;
     }
 
     h2 {
@@ -69,6 +77,10 @@ p {
         font-size: 28px;
     }
 
+    h6 {
+        font-size: 26px;
+    }
+
     p {
         font-size: 20px;
     }
@@ -76,7 +88,7 @@ p {
 
 @media (min-width: 1264px) {
     h1 {
-        font-size: 40px;
+        font-size: 52px;
     }
 
     h2 {
@@ -93,6 +105,10 @@ p {
 
     h5 {
         font-size: 32px;
+    }
+
+    h6 {
+        font-size: 30px;
     }
 
     p {

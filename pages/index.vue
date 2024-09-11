@@ -6,7 +6,7 @@ const formRegister = (value: any) => {
 
 <template>
     <GDSC transparent>
-        <Block img="group_photo.png" :icon="false">
+        <Block dark img="group_photo.png" :icon="false">
             <v-container fluid style="height: 100vh;">
                 <v-row class="fill-height px-8" align="center" justify="center">
                     <v-col>
