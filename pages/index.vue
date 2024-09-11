@@ -11,17 +11,17 @@ const formRegister = (value: any) => {
             <h1>Google Developer Student Clubs</h1>
             <h3>University of San Agustin</h3>
         </Block>
-        <Block :w="2" :h="2">
+        <Block :w="$vuetify.display.smAndDown ? 1 : 2" :h="2">
             <div>
                 <h3>02 - About GDSC USA</h3>
                 <p>GDSC USA is a community group for Augustinian students interested in growing their technical
                     knowledge and applying it to real life situations to create solutions for local businesses and their
                     community.</p>
             </div>
-            <Bubbles>
+            <Bubbles v-if="!$vuetify.display.smAndDown">
                 <Bubble fill="/pop00.png" />
             </Bubbles>
-            <Bubbles>
+            <Bubbles v-if="!$vuetify.display.smAndDown">
                 <Bubble fill="/pop02.png" />
                 <Bubble fill="/pop01.png" />
             </Bubbles>
@@ -65,7 +65,7 @@ const formRegister = (value: any) => {
                     <h3 class="mx-auto">Be Part of the Community!</h3>
                 </v-row>
                 <v-row>
-                    <v-col class="mx-auto">
+                    <v-col class="mx-auto" v-if="!$vuetify.display.smAndDown">
                         <Bubbles>
                             <Bubble fill="/pop02.png" />
                             <Bubble fill="/pop02.png" />

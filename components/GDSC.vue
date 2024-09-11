@@ -72,6 +72,7 @@
                 <v-btn v-for="page in pages" :key="page" :value="page" depressed>{{ page }}</v-btn>
             </v-btn-toggle>
             <v-spacer></v-spacer>
+            <v-spacer></v-spacer>
             <v-btn icon>
                 <v-icon>mdi-magnify</v-icon>
             </v-btn>

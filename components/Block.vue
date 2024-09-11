@@ -39,12 +39,13 @@
 </script>
 <style lang="sass">
     .block
-        min-height: 100vh
+        height: 100vh
+        min-height: 500px
         position: relative
         background-color: #fff
         color: #000
         h1,h2,h3,h4,h5,h6
-            white-space: nowrap
+            // white-space: nowrap
             text-align: center
         p
             text-align: center
