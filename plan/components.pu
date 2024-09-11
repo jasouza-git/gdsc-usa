@@ -7,8 +7,8 @@
 [<b>Form</b><i>(Incomplete)</i>] as Form
 [<b>Slider</b><i>(Incomplete)</i>] as Slider
 [<b>Bubble</b>] as Bubble
-[<b>Card</b>] as Card
-[<b>DateField</b>] as DateField
+[<b>Card</b>\nmember: {\n name:string\n position:string\n avatar?:string\n color?:string\n summary?:string\n fbLink?:string\n lnLink?:string\n itLink\n}] as Card
+[<b>DateField</b>\nrounded:boolean\ndensity?:string\nmin?:Date\nmax?:Date\nvariant?:string\nrules?:function] as DateField
 
 Titlecard --> GDSC : uses
 GDSC --> Block : includes
