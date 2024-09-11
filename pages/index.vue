@@ -8,7 +8,7 @@ const formRegister = (value: any) => {
     <GDSC transparent>
         <Block img="group_photo.png" :icon="false">
             <v-container fluid style="height: 100vh;">
-                <v-row class="fill-height" align="center" justify="center">
+                <v-row class="fill-height px-8" align="center" justify="center">
                     <v-col>
                         <h6>01 - GDSC</h6>
                         <h1>Google Developer Student Clubs</h1>
@@ -18,8 +18,8 @@ const formRegister = (value: any) => {
             </v-container>
         </Block>
         <Block dark>
-            <v-container fluid style="height: 100vh;" min-height="500px">
-                <v-row class="fill-height" align="center" justify="center">
+            <v-container fluid style="height: 100vh;" :min-height="$vuetify.display.smAndDown ? '400px' : '800px'">
+                <v-row class="fill-height px-8" align="center" justify="center">
                     <div style="height: 50px"></div>
                     <v-row>
                         <v-col>
@@ -60,7 +60,7 @@ const formRegister = (value: any) => {
         </Block>
         <Block>
             <v-container fluid style="height: 100vh;" min-height="500px">
-                <v-row class="fill-height py-10" align="center" justify="center">
+                <v-row class="fill-height py-10 px-8" align="center" justify="center">
                     <v-col>
                         <h2>04 - GDSC Event Gallery</h2>
                         <p>We arrange webinars, hold workshops, and engage in community building to help kickstart
