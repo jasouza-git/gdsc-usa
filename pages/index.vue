@@ -49,7 +49,6 @@
                 <Year name="2024-2025">
                 </Year>
             </Deck>
-            <div style="height: 4000px;" class="bg-red"></div>
         </Block>
         <Block>
             <img src="/title.png" width="200" />
