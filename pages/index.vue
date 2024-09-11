@@ -1,3 +1,9 @@
+<script setup lang="ts">
+const formRegister = (value: any) => {
+    console.log(value)
+}
+</script>
+
 <template>
     <GDSC transparent>
         <Block img="group_photo.png">
@@ -51,13 +57,26 @@
             </Deck>
         </Block>
         <Block>
-            <img src="/title.png" width="200" />
-            <h3>Be Part of the Community!</h3>
-            <Bubbles>
-                <img src="" />
-                <img src="" />
-            </Bubbles>
-            <!-- <Form></Form> -->
+            <v-container>
+                <v-row class="mb-8">
+                    <img class="mx-auto" src="/title.png" width="200" />
+                </v-row>
+                <v-row class="mb-8">
+                    <h3 class="mx-auto">Be Part of the Community!</h3>
+                </v-row>
+                <v-row>
+                    <v-col class="mx-auto">
+                        <Bubbles>
+                            <Bubble fill="/pop02.png" />
+                            <Bubble fill="/pop02.png" />
+                        </Bubbles>
+                    </v-col>
+                    <v-col>
+                        <h5 class="mb-2 mx-auto">Membership</h5>
+                        <Form @submit="formRegister"  class="mx-auto"></Form>
+                    </v-col>
+                </v-row>
+            </v-container>
         </Block>
     </GDSC>
 </template>
