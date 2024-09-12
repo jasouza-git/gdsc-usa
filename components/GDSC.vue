@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify';
+
     const info = withDefaults(defineProps<{
         title?: string;             // Title of the webpage
         transparent?: boolean;      // Transparent head at first block?
@@ -29,6 +31,11 @@
             mouse.value[3] = -1;
         });
     });
+
+// import.meta.client used to detect ssr or csr, avoid the "Hydration node mismatch" warning
+const shouldExpand = () => import.meta.client ? (useDisplay().mdAndUp.value) : true
+const abbrTitle = () => import.meta.client && useDisplay().width.value < 500
+
 </script>
 <style lang="sass">
     @font-face
@@ -58,23 +65,28 @@
         color: #fff
 </style>
 <template>
-    <v-layout>
-        <v-app-bar :color="transparent ? 'transparent' : 'primary'" :elevation="transparent ? 0 : 4" :flat="transparent"
-            class="head">
-            <Titlecard :white="transparent" />
-            <v-spacer v-if="$vuetify.display.smAndUp"></v-spacer>
-            <!-- NAVIGATION BUTTONS -->
-            <v-btn-toggle :density="$vuetify.display.mdAndUp ? 'default' : 'compact'" color="primary" manditory dark v-model="active_page">
-                <v-btn :style="$vuetify.display.mdAndUp ? '' : 'font-size: 10px'" v-for="page in pages" :key="page" :value="page" depressed>{{ $vuetify.display.width < 500 ? Array.from(page)[0] : page }}</v-btn>
-            </v-btn-toggle>
-            <v-spacer v-if="$vuetify.display.mdAndUp"></v-spacer>
-            <v-spacer></v-spacer>
-            <v-btn icon>
-                <v-icon>mdi-magnify</v-icon>
-            </v-btn>
-        </v-app-bar>
-        <v-main style="padding-top: 0">
-            <slot></slot>
-        </v-main>
-    </v-layout>
+    <!-- use ClientOnly to avoid "Hydration node mismatch" warning -->
+    <ClientOnly>
+        <v-layout>
+            <v-app-bar :color="transparent ? 'transparent' : 'primary'" :elevation="transparent ? 0 : 4"
+                :flat="transparent" class="head">
+                <Titlecard :white="transparent" />
+                <v-spacer v-if="shouldExpand()"></v-spacer>
+                <!-- NAVIGATION BUTTONS -->
+                <v-btn-toggle :density="shouldExpand() ? 'default' : 'compact'" color="primary" manditory dark
+                    v-model="active_page">
+                    <v-btn :style="shouldExpand() ? '' : 'font-size: 10px'" v-for="page in pages" :key="page"
+                        :value="page" depressed>{{ abbrTitle() ? Array.from(page)[0] : page }}</v-btn>
+                </v-btn-toggle>
+                <v-spacer v-if="shouldExpand()"></v-spacer>
+                <v-spacer></v-spacer>
+                <v-btn icon>
+                    <v-icon>mdi-magnify</v-icon>
+                </v-btn>
+            </v-app-bar>
+            <v-main style="padding-top: 0">
+                <slot></slot>
+            </v-main>
+        </v-layout>
+    </ClientOnly>
 </template>

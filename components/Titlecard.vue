@@ -1,9 +1,17 @@
 <script setup lang="ts">
+import { useDisplay } from 'vuetify';
+
     const info = withDefaults(defineProps<{
-        white?:boolean
+        white?: boolean,
+        screenFit?: boolean
     }>(), {
-        white:false
+        white: false,
+        screenFit: true
     });
+
+// import.meta.client used to detect ssr or csr, avoid the "Hydration node mismatch" warning
+const shouldExpand = () => import.meta.client ? (info.screenFit ? useDisplay().mdAndUp.value : true) : true
+
 </script>
 <style lang="sass">
     .gdsc_logo
@@ -34,9 +42,12 @@
             color: #fff
 </style>
 <template>
-    <div class="gdsc_logo mr-3" :style="$vuetify.display.mdAndUp ? 'width: 300px' : ''" :class="white ? 'white': ''">
-        <img  src="/favicon.png" />
-        <h1 v-if="$vuetify.display.mdAndUp">Google Developer Student Clubs</h1>
-        <h2 v-if="$vuetify.display.mdAndUp">University of San Agustin</h2>
-    </div>
+    <!-- use ClientOnly to avoid "Hydration node mismatch" warning -->
+    <ClientOnly>
+        <div class="gdsc_logo mr-3" :style="shouldExpand() ? 'width: 300px' : ''" :class="white ? 'white': ''">
+            <img src="/favicon.png" />
+            <h1 v-if="shouldExpand()">Google Developer Student Clubs</h1>
+            <h2 v-if="shouldExpand()">University of San Agustin</h2>
+        </div>
+    </ClientOnly>
 </template>
