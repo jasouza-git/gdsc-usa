@@ -6,16 +6,20 @@ const formRegister = (value: any) => {
 }
 
 const decideFormWidth = () => {
-    const w =  useDisplay().width.value
+    const w = useDisplay().width.value
     return w < 430 ? 340 :
-    useDisplay().smAndDown.value ? 420 : 500
+        useDisplay().smAndDown.value ? 420 : 500
 }
 
 // get the random number using "useAsyncData" function, ensure the data gathered at server side.
 // avoid "Hydration node mismatch" warning
-const { data } = await useAsyncData("randomNums", () => Promise.resolve([Math.random(), Math.random(), Math.random(), Math.random(), Math.random()]))
+const { data: randomNums } = await useAsyncData("randomNums", async () => [1, 2, 3, 4, 5].map(i => Math.random()))
 
-const randomNums = ref(data.value as number[])
+const year = ref('2023 - 2024')
+
+watch(randomNums, () => {
+    console.log(randomNums)
+})
 
 </script>
 
@@ -83,36 +87,27 @@ const randomNums = ref(data.value as number[])
                     <p class="mb-4">We arrange webinars, hold workshops, and engage in community building to help
                         kickstart careers!
                     </p>
-                    <v-row align="center" justify="center" v-for="n in 5">
-                        <input :value="randomNums[n - 1]"></input>
+                    <v-row align="center" justify="center" v-for="(n, i) of randomNums" :key="i">
+                        <input :value="n"></input>
                     </v-row>
-                    <Slider>
-                        <div>
-                            <img src="" />
-                            <h6>2023-03-07 | University Week 2023 Alternative Class</h6>
-                            <p>Gathering Augustinian tech enthusiasts, GDSC USA and Holotech Society arranged the
-                                alternative
-                                classes, "Marketing Yourself: A Guide to Resume and Job Interviews" and "PC Building
-                                101: A
-                                Rundown on the Basics of Building Your Rigs," March 3. Augustinians engaged in
-                                interactive
-                                classes at the University's Special Laboratory, with Ms. Ma. Ariessa Lane C. Ko on
-                                creating a
-                                resumé and nailing job interviews and Mr. John Eric Benliro Tayco on the basics of
-                                PC
-                                building.
-                            </p>
-                        </div>
-                    </Slider>
+                    <Slider />
                 </v-col>
             </v-row>
         </v-container>
     </Block>
     <Block dark icon>
-        <v-container fluid style="height: 100vh;" min-height="500px">
+        <v-container fluid min-height="500px">
             <v-row class="fill-height py-10" align="center" justify="center">
-                <h2>Meet Our Team!</h2>
+                <v-col>
+                    <v-row class="mt-8 mb-10">
+                        <h2 class="mx-auto">Meet Our Team!</h2>
+                    </v-row>
+                    <v-row>
+                        <Deck v-model:yearLvl="year"></Deck>
+                    </v-row>
+                </v-col>
             </v-row>
+            <div style="height: 50px"></div>
         </v-container>
     </Block>
     <Block icon>

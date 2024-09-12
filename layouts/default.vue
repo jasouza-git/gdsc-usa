@@ -1,5 +1,6 @@
 <template>
-    <GDSC transparent />
-    <NuxtPage />
+    <GDSC transparent>
+        <NuxtPage />
+    </GDSC>
     <Footer />
 </template>

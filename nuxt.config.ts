@@ -37,7 +37,10 @@ export default defineNuxtConfig({
         '~/assets/css/style.css',
         '@fortawesome/fontawesome-free/css/all.css',
     ],
-
     compatibilityDate: '2024-04-03',
-    devtools: { enabled: true }
+    devtools: { enabled: true },
+    sourcemap: {
+        server: true,
+        client: true
+      }
 })

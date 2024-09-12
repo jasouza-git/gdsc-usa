@@ -65,9 +65,9 @@ const abbrTitle = () => import.meta.client && useDisplay().width.value < 500
         color: #fff
 </style>
 <template>
-    <!-- use ClientOnly to avoid "Hydration node mismatch" warning -->
-    <ClientOnly>
-        <v-layout>
+    <v-layout>
+        <!-- use ClientOnly to avoid "Hydration node mismatch" warning -->
+        <ClientOnly>
             <v-app-bar :color="transparent ? 'transparent' : 'primary'" :elevation="transparent ? 0 : 4"
                 :flat="transparent" class="head">
                 <Titlecard shadow :white="transparent" />
@@ -84,9 +84,9 @@ const abbrTitle = () => import.meta.client && useDisplay().width.value < 500
                     <v-icon>mdi-magnify</v-icon>
                 </v-btn>
             </v-app-bar>
-            <v-main style="padding-top: 0">
-                <slot></slot>
-            </v-main>
-        </v-layout>
-    </ClientOnly>
+        </ClientOnly>
+        <v-main style="padding-top: 0">
+            <slot></slot>
+        </v-main>
+    </v-layout>
 </template>
