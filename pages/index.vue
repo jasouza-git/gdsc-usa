@@ -15,12 +15,12 @@ const decideFormWidth = () => {
 // avoid "Hydration node mismatch" warning
 const { data } = await useAsyncData("randomNums", () => Promise.resolve([Math.random(), Math.random(), Math.random(), Math.random(), Math.random()]))
 
-const randomNums = ref<number[]>(data.value as number[])
+const randomNums = ref(data.value as number[])
 
 </script>
 
 <template>
-    <Block dark img="group_photo.png" :icon="false">
+    <Block dark img="group_photo.png">
         <v-container fluid style="height: 100vh;">
             <v-row class="fill-height px-8" align="center" justify="center">
                 <v-col>
@@ -31,7 +31,7 @@ const randomNums = ref<number[]>(data.value as number[])
             </v-row>
         </v-container>
     </Block>
-    <Block dark>
+    <Block dark icon>
         <!-- use ClientOnly to avoid "Hydration node mismatch" warning -->
         <ClientOnly>
             <v-container fluid style="height: 100vh;" :min-height="$vuetify.display.smAndDown ? '400px' : '800px'">
@@ -75,7 +75,7 @@ const randomNums = ref<number[]>(data.value as number[])
             </v-container>
         </ClientOnly>
     </Block>
-    <Block>
+    <Block icon>
         <v-container fluid style="height: 100vh;" min-height="500px">
             <v-row class="fill-height py-10 px-8" align="center" justify="center">
                 <v-col>
@@ -108,14 +108,14 @@ const randomNums = ref<number[]>(data.value as number[])
             </v-row>
         </v-container>
     </Block>
-    <Block dark>
+    <Block dark icon>
         <v-container fluid style="height: 100vh;" min-height="500px">
             <v-row class="fill-height py-10" align="center" justify="center">
                 <h2>Meet Our Team!</h2>
             </v-row>
         </v-container>
     </Block>
-    <Block>
+    <Block icon>
         <v-container fluid min-height="500px">
             <div style="height: 50px"></div>
             <ClientOnly>
