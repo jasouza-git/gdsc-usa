@@ -2,6 +2,7 @@
 
 import type { Member } from '~/components/Member'
 import { alterColors, ColorAdjustParas, randomColor } from './ColorFunctions';
+import { useDisplay } from 'vuetify';
 
 const colorLightenLvl = 4
 var cardColors = alterColors(ColorAdjustParas.lighten, colorLightenLvl)
@@ -118,37 +119,44 @@ const yearLvlChanged = (yearL?: string) => {
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
+const isSmallScreen = () => useDisplay().width.value < 400
+
 </script>
 
 <template>
     <v-container>
         <v-row style="width: 160px" class="mx-auto">
-            <v-select single-line density="compact" variant="solo" rounded :items="years as string[]" :disabled="loading" @update:model-value="yearLvlChanged($event as string)"
-                v-model="yearLvl" style="text-align: center;"></v-select>
+            <v-select single-line density="compact" variant="solo" rounded :items="years as string[]"
+                :disabled="loading" @update:model-value="yearLvlChanged($event as string)" v-model="yearLvl"
+                style="text-align: center;"></v-select>
         </v-row>
-        <v-row v-if="!loading" v-for="(p, i) in datas" no-gutters>
-            <v-row v-if="p.member.length === 1" class="ma-0 pa-0">
-                <v-col class="pa-0 ma-5">
-                    <Card class="mx-auto ma-0 pa-0" :member="/* @ts-ignore */p.member[0]"></Card>
+        <ClientOnly>
+            <v-row v-if="!loading" v-for="(p, i) in datas" no-gutters>
+                <v-row v-if="p.member.length === 1" no-gutters>
+                    <v-col :class="'pa-0 ' + (isSmallScreen() ? 'ma-2' : 'ma-5')">
+                        <Card class="mx-auto" :member="/* @ts-ignore */p.member[0]"></Card>
+                    </v-col>
+                </v-row>
+
+                <v-data-iterator class="mx-auto" v-if="p.member.length > 1" :items="p.member">
+                    <template v-slot:default="{ items }">
+                        <v-row no-gutters>
+                            <v-col :class="'pa-0 ' + (isSmallScreen() ? 'ma-2' : 'ma-5')"
+                                v-for="(member, index) in items" :key="index">
+                                <Card class="mx-auto" :member="/* @ts-ignore */member.raw"></Card>
+                            </v-col>
+                        </v-row>
+                    </template>
+                </v-data-iterator>
+            </v-row>
+            <v-row v-else no-gutters>
+                <v-col v-for="(color, k) in loadingColors">
+                    <v-skeleton-loader :color="color" style="border-radius: 10px;" :elevation="12"
+                        :class="'border mx-auto pa-0 ' + (isSmallScreen() ? 'my-2' : 'my-5')" width="320" height="190"
+                        type="list-item-avatar-three-line, paragraph"></v-skeleton-loader>
                 </v-col>
             </v-row>
-            <v-data-iterator class="mx-auto" v-if="p.member.length > 1" :items="p.member">
-                <template v-slot:default="{ items }">
-                    <v-row class="ma-0 pa-0">
-                        <v-col class="ma-5 pa-0" v-for="(member, index) in items" :key="index">
-                            <Card class="mx-auto" :member="/* @ts-ignore */member.raw"></Card>
-                        </v-col>
-                    </v-row>
-                </template>
-            </v-data-iterator>
-        </v-row>
-        <v-row v-else>
-            <v-col v-for="(color, k) in loadingColors">
-                <v-skeleton-loader :color="color" style="border-radius: 10px;" :elevation="12"
-                    class="border mx-auto my-1" width="320" height="190"
-                    type="list-item-avatar-three-line, paragraph"></v-skeleton-loader>
-            </v-col>
-        </v-row>
+        </ClientOnly>
     </v-container>
 </template>
 

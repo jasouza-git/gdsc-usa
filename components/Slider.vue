@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <!-- <div>
         <img src="" />
         <h6>2023-03-07 | University Week 2023 Alternative Class</h6>
         <p>Gathering Augustinian tech enthusiasts, GDSC USA and Holotech Society arranged the
@@ -14,5 +14,5 @@
             PC
             building.
         </p>
-    </div>
+    </div> -->
 </template>
