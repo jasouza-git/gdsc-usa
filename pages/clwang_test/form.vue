@@ -7,8 +7,10 @@ const handleFormSubmit = (values: any) => {
 
 <template>
     <v-container>
+        <div style="height: 100px; width: 100%;"></div>
         <v-row>
             <Form @submit="handleFormSubmit" class="mx-auto"></Form>
         </v-row>
+        <div style="height: 70px; width: 100%;"></div>
     </v-container>
 </template>

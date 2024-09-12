@@ -8,24 +8,32 @@ const formRegister = (value: any) => {
 const decideFormWidth = () => {
     const w =  useDisplay().width.value
     return w < 430 ? 340 :
-    useDisplay().smAndDown.value ? 420 : 530
+    useDisplay().smAndDown.value ? 420 : 500
 }
+
+// get the random number using "useAsyncData" function, ensure the data gathered at server side.
+// avoid "Hydration node mismatch" warning
+const { data } = await useAsyncData("randomNums", () => Promise.resolve([Math.random(), Math.random(), Math.random(), Math.random(), Math.random()]))
+
+const randomNums = ref(data.value as number[])
+
 </script>
 
 <template>
-    <GDSC transparent>
-        <Block dark img="group_photo.png" :icon="false">
-            <v-container fluid style="height: 100vh;">
-                <v-row class="fill-height px-8" align="center" justify="center">
-                    <v-col>
-                        <h6>01 - GDSC</h6>
-                        <h1>Google Developer Student Clubs</h1>
-                        <h3>University of San Agustin</h3>
-                    </v-col>
-                </v-row>
-            </v-container>
-        </Block>
-        <Block dark>
+    <Block dark img="group_photo.png">
+        <v-container fluid style="height: 100vh;">
+            <v-row class="fill-height px-8" align="center" justify="center">
+                <v-col>
+                    <h6>01 - GDSC</h6>
+                    <h1>Google Developer Student Clubs</h1>
+                    <h3>University of San Agustin</h3>
+                </v-col>
+            </v-row>
+        </v-container>
+    </Block>
+    <Block dark icon>
+        <!-- use ClientOnly to avoid "Hydration node mismatch" warning -->
+        <ClientOnly>
             <v-container fluid style="height: 100vh;" :min-height="$vuetify.display.smAndDown ? '400px' : '800px'">
                 <v-row class="fill-height px-8" align="center" justify="center">
                     <div style="height: 50px"></div>
@@ -65,59 +73,62 @@ const decideFormWidth = () => {
                     <div style="height: 50px"></div>
                 </v-row>
             </v-container>
-        </Block>
-        <Block>
-            <v-container fluid style="height: 100vh;" min-height="500px">
-                <v-row class="fill-height py-10 px-8" align="center" justify="center">
-                    <v-col>
-                        <h2>04 - GDSC Event Gallery</h2>
-                        <p>We arrange webinars, hold workshops, and engage in community building to help kickstart
-                            careers!
-                        </p>
-                        <input v-for="n in 5" :value="Math.random()" />
-                        <Slider>
-                            <div>
-                                <img src="" />
-                                <h6>2023-03-07 | University Week 2023 Alternative Class</h6>
-                                <p>Gathering Augustinian tech enthusiasts, GDSC USA and Holotech Society arranged the
-                                    alternative
-                                    classes, "Marketing Yourself: A Guide to Resume and Job Interviews" and "PC Building
-                                    101: A
-                                    Rundown on the Basics of Building Your Rigs," March 3. Augustinians engaged in
-                                    interactive
-                                    classes at the University's Special Laboratory, with Ms. Ma. Ariessa Lane C. Ko on
-                                    creating a
-                                    resumé and nailing job interviews and Mr. John Eric Benliro Tayco on the basics of
-                                    PC
-                                    building.
-                                </p>
-                            </div>
-                        </Slider>
-                    </v-col>
-                </v-row>
-            </v-container>
-        </Block>
-        <Block dark>
-            <v-container fluid style="height: 100vh;" min-height="500px">
-                <v-row class="fill-height py-10" align="center" justify="center">
-                    <h2>Meet Our Team!</h2>
-                    <Deck>
-                        <Year name="2024-2025">
-                        </Year>
-                    </Deck>
-                </v-row>
-            </v-container>
-        </Block>
-        <Block>
-            <v-container fluid min-height="500px">
-                <div style="height: 50px"></div>
+        </ClientOnly>
+    </Block>
+    <Block icon>
+        <v-container fluid style="height: 100vh;" min-height="500px">
+            <v-row class="fill-height py-10 px-8" align="center" justify="center">
+                <v-col>
+                    <h2>04 - GDSC Event Gallery</h2>
+                    <p class="mb-4">We arrange webinars, hold workshops, and engage in community building to help
+                        kickstart careers!
+                    </p>
+                    <v-row align="center" justify="center" v-for="n in 5">
+                        <input :value="randomNums[n - 1]"></input>
+                    </v-row>
+                    <Slider>
+                        <div>
+                            <img src="" />
+                            <h6>2023-03-07 | University Week 2023 Alternative Class</h6>
+                            <p>Gathering Augustinian tech enthusiasts, GDSC USA and Holotech Society arranged the
+                                alternative
+                                classes, "Marketing Yourself: A Guide to Resume and Job Interviews" and "PC Building
+                                101: A
+                                Rundown on the Basics of Building Your Rigs," March 3. Augustinians engaged in
+                                interactive
+                                classes at the University's Special Laboratory, with Ms. Ma. Ariessa Lane C. Ko on
+                                creating a
+                                resumé and nailing job interviews and Mr. John Eric Benliro Tayco on the basics of
+                                PC
+                                building.
+                            </p>
+                        </div>
+                    </Slider>
+                </v-col>
+            </v-row>
+        </v-container>
+    </Block>
+    <Block dark icon>
+        <v-container fluid style="height: 100vh;" min-height="500px">
+            <v-row class="fill-height py-10" align="center" justify="center">
+                <h2>Meet Our Team!</h2>
+            </v-row>
+        </v-container>
+    </Block>
+    <Block icon>
+        <v-container fluid min-height="500px">
+            <div style="height: 50px"></div>
+            <ClientOnly>
                 <v-row class="mb-8">
                     <img class="mx-auto" src="/title.png" :width="decideFormWidth() / 2" />
                 </v-row>
-                <v-row class="mb-8">
-                    <h3 class="mx-auto">Be Part of the Community!</h3>
-                </v-row>
-                <v-row>
+            </ClientOnly>
+            <v-row class="mb-8">
+                <h3 class="mx-auto">Be Part of the Community!</h3>
+            </v-row>
+            <v-row>
+                <!-- use ClientOnly to avoid "Hydration node mismatch" warning -->
+                <ClientOnly>
                     <v-col class="mx-auto" v-if="!$vuetify.display.smAndDown">
                         <Bubbles>
                             <Bubble fill="/pop02.png" />
@@ -128,8 +139,9 @@ const decideFormWidth = () => {
                         <h5 class="mb-2 mx-auto">Membership</h5>
                         <Form :width="decideFormWidth()" @submit="formRegister" class="mx-auto"></Form>
                     </v-col>
-                </v-row>
-            </v-container>
-        </Block>
-    </GDSC>
+                </ClientOnly>
+            </v-row>
+            <div style="height: 70px"></div>
+        </v-container>
+    </Block>
 </template>
