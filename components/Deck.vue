@@ -16,7 +16,7 @@ const yearLvl = defineModel<string>("yearLvl")
 const fetchDatas = async (year: string): Promise<PositionGroup[]> => {
     loading.value = true
     loadingColors.value = randomLoadingColor()
-    // await sleep(2000)
+    await sleep(2000)
     loading.value = false
     return [
         {
