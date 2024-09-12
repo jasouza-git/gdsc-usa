@@ -1,6 +1,6 @@
 type Color = string
 
-enum ColorAdjustParas { 
+export enum ColorAdjustParas { 
     lighten = "lighten",
     darken = "darken",
     accent = "accent"

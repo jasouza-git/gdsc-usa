@@ -70,7 +70,7 @@ const abbrTitle = () => import.meta.client && useDisplay().width.value < 500
         <v-layout>
             <v-app-bar :color="transparent ? 'transparent' : 'primary'" :elevation="transparent ? 0 : 4"
                 :flat="transparent" class="head">
-                <Titlecard :white="transparent" />
+                <Titlecard shadow :white="transparent" />
                 <v-spacer v-if="shouldExpand()"></v-spacer>
                 <!-- NAVIGATION BUTTONS -->
                 <v-btn-toggle :density="shouldExpand() ? 'default' : 'compact'" color="primary" manditory dark

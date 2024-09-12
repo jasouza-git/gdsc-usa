@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import {alterColors, randomColor } from '../../components/ColorFunctions.ts';
+import {alterColors, ColorAdjustParas, randomColor } from '../../components/ColorFunctions';
 const loading = ref(true)
 const colorLightenLvl = 4
-var cardColors = alterColors("lighten", colorLightenLvl)
+var cardColors = alterColors(ColorAdjustParas.lighten, colorLightenLvl)
 const members = ref([
     {
         name: "Member Name",
@@ -66,7 +66,7 @@ const members = ref([
 ])
 const getRandomColor = () => {
     const res = randomColor(cardColors)
-    if (res.remainingColors.length === 0) { cardColors = alterColors("lighten", colorLightenLvl) }
+    if (res.remainingColors.length === 0) { cardColors = alterColors(ColorAdjustParas.lighten, colorLightenLvl) }
     else { cardColors = res.remainingColors }
     return res.color
 }
@@ -74,18 +74,20 @@ const getRandomColor = () => {
 
 <template>
     <v-container>
+        <div style="height: 100px; width: 100%;"></div>
         <v-data-iterator :items="members" :items-per-page="6" :loading="loading">
             <template v-slot:header>
                 <v-container>
-                    <v-btn density="comfortable" variant="tonal"
-                    rounded @click="loading = !loading">loading off/on</v-btn>
+                    <v-btn density="comfortable" variant="tonal" rounded @click="loading = !loading">loading
+                        off/on</v-btn>
                 </v-container>
             </template>
 
             <template v-slot:default="{ items }">
                 <v-row>
                     <v-col v-for="(member, index) in items" :key="index">
-                        <Card class="mx-auto" :member="member.raw"></Card>
+
+                        <Card class="mx-auto" :member="/* @ts-ignore */member.raw"></Card>
                     </v-col>
                 </v-row>
             </template>
@@ -107,11 +109,13 @@ const getRandomColor = () => {
             <template v-slot:loader>
                 <v-row>
                     <v-col v-for="(_, k) in [0, 1, 2, 3, 4, 5]" :key="k">
-                        <v-skeleton-loader :color="getRandomColor()" style="border-radius: 10px;" :elevation="12" class="border mx-auto" width="320" height="190" type="list-item-avatar-three-line, paragraph"></v-skeleton-loader>
+                        <v-skeleton-loader :color="getRandomColor()" style="border-radius: 10px;" :elevation="12"
+                            class="border mx-auto" width="320" height="190"
+                            type="list-item-avatar-three-line, paragraph"></v-skeleton-loader>
                     </v-col>
                 </v-row>
             </template>
         </v-data-iterator>
-
+        <div style="height: 70px; width: 100%;"></div>
     </v-container>
 </template>
