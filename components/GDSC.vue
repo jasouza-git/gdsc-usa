@@ -65,28 +65,25 @@ const abbrTitle = () => import.meta.client && useDisplay().width.value < 500
         color: #fff
 </style>
 <template>
-    <!-- use ClientOnly to avoid "Hydration node mismatch" warning -->
-    <ClientOnly>
-        <v-layout>
+    <v-layout>
+        <!-- use ClientOnly to avoid "Hydration node mismatch" warning -->
+        <ClientOnly>
             <v-app-bar :color="transparent ? 'transparent' : 'primary'" :elevation="transparent ? 0 : 4"
                 :flat="transparent" class="head">
                 <Titlecard shadow :white="transparent" />
-                <v-spacer v-if="shouldExpand()"></v-spacer>
                 <!-- NAVIGATION BUTTONS -->
-                <v-btn-toggle :density="shouldExpand() ? 'default' : 'compact'" color="primary" manditory dark
+                <v-btn-toggle class="mx-auto" :density="shouldExpand() ? 'default' : 'compact'" color="primary" manditory dark
                     v-model="active_page">
                     <v-btn :style="shouldExpand() ? '' : 'font-size: 10px'" v-for="page in pages" :key="page"
                         :value="page" depressed>{{ abbrTitle() ? Array.from(page)[0] : page }}</v-btn>
                 </v-btn-toggle>
-                <v-spacer v-if="shouldExpand()"></v-spacer>
-                <v-spacer></v-spacer>
                 <v-btn icon>
                     <v-icon>mdi-magnify</v-icon>
                 </v-btn>
             </v-app-bar>
-            <v-main style="padding-top: 0">
-                <slot></slot>
-            </v-main>
-        </v-layout>
-    </ClientOnly>
+        </ClientOnly>
+        <v-main style="padding-top: 0">
+            <slot></slot>
+        </v-main>
+    </v-layout>
 </template>

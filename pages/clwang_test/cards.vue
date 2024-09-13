@@ -86,7 +86,6 @@ const getRandomColor = () => {
             <template v-slot:default="{ items }">
                 <v-row>
                     <v-col v-for="(member, index) in items" :key="index">
-
                         <Card class="mx-auto" :member="/* @ts-ignore */member.raw"></Card>
                     </v-col>
                 </v-row>
@@ -110,7 +109,7 @@ const getRandomColor = () => {
                 <v-row>
                     <v-col v-for="(_, k) in [0, 1, 2, 3, 4, 5]" :key="k">
                         <v-skeleton-loader :color="getRandomColor()" style="border-radius: 10px;" :elevation="12"
-                            class="border mx-auto" width="320" height="190"
+                            class="border mx-auto" width="320" height="184"
                             type="list-item-avatar-three-line, paragraph"></v-skeleton-loader>
                     </v-col>
                 </v-row>
