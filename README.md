@@ -1,0 +1,61 @@
+# GDSC Website
+
+### Running
+```bash
+# Setup
+npm install
+# Start Server
+npm run dev
+# Build Production
+npm run build
+```
+
+### Installation
+```bash
+# Setup NuxtJS
+echo -e "npm\nyes" | npx nuxi@latest init .
+npm i
+
+# Install vuetify (https://vuetifyjs.com/en/getting-started/installation/#manual-setup)
+npm i -D vuetify vite-plugin-vuetify
+npm i @mdi/font
+# Setup vuetify
+sed -i "1i\import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'" nuxt.config.ts
+sed -i '/export default defineNuxtConfig({/a\  vite: {\n    vue: {\n      template: {\n        transformAssetUrls,\n      },\n    },\n  },' nuxt.config.ts
+sed -i '/export default defineNuxtConfig({/a\  modules: [\n    (_options, nuxt) => {\n      nuxt.hooks.hook("vite:extendConfig", (config) => {\n        // @ts-expect-error\n        config.plugins.push(vuetify({ autoImport: true }))\n      })\n    },\n  ],' nuxt.config.ts
+sed -i '/export default defineNuxtConfig({/a\  build: {\n    transpile: ["vuetify"],\n  },' nuxt.config.ts
+mkdir -p plugins
+cat <<EOF > plugins/vuetify.ts
+import '@mdi/font/css/materialdesignicons.css'
+import 'vuetify/styles'
+import { createVuetify } from 'vuetify'
+export default defineNuxtPlugin((app) => {
+  const vuetify = createVuetify({
+    // ... your configuration
+  })
+  app.vueApp.use(vuetify)
+})
+EOF
+
+# Install Tailwind CSS (https://tailwindcss.com/docs/guides/nuxtjs)
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init
+# Setup Tailwind CSS
+sed -i '/export default defineNuxtConfig({/a\  postcss: {\n    plugins: {\n      tailwindcss: {},\n      autoprefixer: {},\n    },\n  },' nuxt.config.ts
+sed -i '/^\s*content: \[\s*\],/c\  content: [\n    "./components/**/*.{js,vue,ts}",\n    "./layouts/**/*.vue",\n    "./pages/**/*.vue",\n    "./plugins/**/*.{js,ts}",\n    "./app.vue",\n    "./error.vue",\n  ],' tailwind.config.js
+mkdir -p assets/css
+cat <<EOF > assets/css/main.css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+EOF
+sed -i '/export default defineNuxtConfig({/a\  css: [\n    "~/assets/css/main.css",\n  ],' nuxt.config.ts
+
+# Install fontawesome
+#npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons @fortawesome/vue-fontawesome
+# Install pinia
+#npm install pinia
+# Build
+npm run build
+npm run preview
+```
