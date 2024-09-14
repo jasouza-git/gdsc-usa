@@ -1,0 +1,1 @@
+{"version":3,"file":"Dkmq3kIU.js","sources":["../../../../layouts/error.vue"],"sourcesContent":["<template>\n    <h1>Error {{ error.statusCode }}</h1>\n</template>"],"names":["_sfc_render","_ctx","_cache"],"mappings":"kEACI,SAAAA,EAAAC,EAAAC,EAAA"}
