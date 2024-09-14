@@ -1,2 +1,0 @@
-import{am as a,r as c,aH as u,e as f,O as i,aP as l}from"./CrbWWXTZ.js";function m(R){let r=arguments.length>1&&arguments[1]!==void 0?arguments[1]:"content";const s=a(),t=c();if(u){const n=new ResizeObserver(e=>{e.length&&(r==="content"?t.value=e[0].contentRect:t.value=e[0].target.getBoundingClientRect())});f(()=>{n.disconnect()}),i(()=>s.el,(e,o)=>{o&&(n.unobserve(o),t.value=void 0),e&&n.observe(e)},{flush:"post"})}return{resizeRef:s,contentRect:l(t)}}export{m as u};
-//# sourceMappingURL=_7Kz8Y36.js.map

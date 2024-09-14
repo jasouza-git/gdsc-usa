@@ -1,5 +1,0 @@
-const style = "h1{font-size:34px}h2{font-size:26px}h3{font-size:24px}h4{font-size:22px}h5{font-size:20px}h6,p{font-size:16px}@media (min-width:600px){h1{font-size:38px}h2{font-size:30px}h3{font-size:28px}h4{font-size:26px}h5{font-size:24px}h6{font-size:22px}p{font-size:18px}}@media (min-width:960px){h1{font-size:45px}h2{font-size:34px}h3{font-size:32px}h4{font-size:30px}h5{font-size:28px}h6{font-size:26px}p{font-size:20px}}@media (min-width:1264px){h1{font-size:52px}h2{font-size:38px}h3{font-size:36px}h4{font-size:34px}h5{font-size:32px}h6{font-size:30px}p{font-size:22px}}";
-export {
-  style as default
-};
-//# sourceMappingURL=entry-styles-1.mjs-bj7RvBDh.js.map

@@ -1,1 +1,0 @@
-{"file":"error-44ZikUdP.js","mappings":";;;;;;;;;;;;;;;;AAAA,SAAA,eAAA,MAAA,OAAA,SAAA,QAAA;QAAA;;;;;;;;;","names":[],"sources":["../../../../layouts/error.vue"],"sourcesContent":["<template>\n    <h1>Error {{ error.statusCode }}</h1>\n</template>"],"version":3}
