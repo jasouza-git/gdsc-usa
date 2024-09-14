@@ -1,5 +1,9 @@
 # GDSC Website
 
+## Plans
+- Components
+  ![](plan/components.svg)
+
 ### Running
 ```bash
 # Setup
@@ -50,6 +54,10 @@ cat <<EOF > assets/css/main.css
 @tailwind utilities;
 EOF
 sed -i '/export default defineNuxtConfig({/a\  css: [\n    "~/assets/css/main.css",\n  ],' nuxt.config.ts
+
+# Directory
+mkdir -p plan pages components
+sed -i '/export default defineNuxtConfig({/a\  app: {\n    head: {\n      titleTemplate: "GDSC USA Website",\n      title: "GDSC USA Website",\n      meta: [\n        { charset: "utf-8" },\n        { name: "viewport", content: "width=device-width, initial-scale=1" },\n        { hid: "description", name: "description", content: "" },\n        { name: "format-detection", content: "telephone=no" }\n      ],\n      link: [\n        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },\n      ]\n    },\n  },' nuxt.config.ts
 
 # Install fontawesome
 #npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons @fortawesome/vue-fontawesome
