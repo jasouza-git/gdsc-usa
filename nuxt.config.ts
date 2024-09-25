@@ -29,6 +29,7 @@ export default defineNuxtConfig({
     transpile: ["vuetify"],
   },
   modules: [
+    '@vesp/nuxt-fontawesome',
     (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
         // @ts-expect-error

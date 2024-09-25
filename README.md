@@ -44,7 +44,7 @@ EOF
 # Install Tailwind CSS (https://tailwindcss.com/docs/guides/nuxtjs)
 npm install -D tailwindcss postcss autoprefixer
 npx tailwindcss init
-# Setup Tailwind CSS
+# Setup Tailwind CSS (Later added some plugins in tailwind.config.js)
 sed -i '/export default defineNuxtConfig({/a\  postcss: {\n    plugins: {\n      tailwindcss: {},\n      autoprefixer: {},\n    },\n  },' nuxt.config.ts
 sed -i '/^\s*content: \[\s*\],/c\  content: [\n    "./components/**/*.{js,vue,ts}",\n    "./layouts/**/*.vue",\n    "./pages/**/*.vue",\n    "./plugins/**/*.{js,ts}",\n    "./app.vue",\n    "./error.vue",\n  ],' tailwind.config.js
 mkdir -p assets/css
@@ -59,7 +59,10 @@ sed -i '/export default defineNuxtConfig({/a\  css: [\n    "~/assets/css/main.cs
 mkdir -p plan pages components
 sed -i '/export default defineNuxtConfig({/a\  app: {\n    head: {\n      titleTemplate: "GDSC USA Website",\n      title: "GDSC USA Website",\n      meta: [\n        { charset: "utf-8" },\n        { name: "viewport", content: "width=device-width, initial-scale=1" },\n        { hid: "description", name: "description", content: "" },\n        { name: "format-detection", content: "telephone=no" }\n      ],\n      link: [\n        { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },\n      ]\n    },\n  },' nuxt.config.ts
 
-# Install fontawesome
+# Install fontawesome (https://vuetifyjs.com/en/features/icon-fonts/#fa-5-css)
+#npx nuxi@latest module add @vesp/nuxt-fontawesome
+#npm i -D @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons
+npm install @fortawesome/fontawesome-free -D
 #npm install --save @fortawesome/fontawesome-svg-core @fortawesome/free-solid-svg-icons @fortawesome/free-regular-svg-icons @fortawesome/free-brands-svg-icons @fortawesome/vue-fontawesome
 # Install pinia
 #npm install pinia
