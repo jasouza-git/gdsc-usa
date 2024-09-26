@@ -18,7 +18,7 @@
     });
 </script>
 <template>
-    <div :class="'flex flex-col items-center justify-center p-2.5 '+(landing ? 'text-center' : 'text-left')">
+    <div :class="'flex flex-col items-center justify-center p-2.5 text-xl '+(landing ? 'text-center' : 'text-left')">
         <!--- Paragraph Num --->
         <p :class="landing ? '' : 'font-bold'">
             <span v-if="num > 0">{{ String(num).padStart(2,'0')+' - ' }}</span>

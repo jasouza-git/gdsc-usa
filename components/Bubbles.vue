@@ -36,7 +36,7 @@
         color: ['red','yellow','green','blue'][Math.floor(Math.random()*4)] as 'red'|'yellow'|'green'|'blue',
         x: Array(2).fill(0).map(x=>Math.random()).reduce((a,b)=>a+b)/2*info.span-info.span/2,
         y: Array(2).fill(0).map(x=>Math.random()).reduce((a,b)=>a+b)/2*info.span-info.span/2,
-        z: Math.round(Math.random()*75)+25,
+        z: Math.round(Math.random()*15)+5,
     }));
     let angle = ref<number>(Math.random()*2*Math.PI);
 </script>
@@ -53,7 +53,7 @@
             :fill="n"
             :x="(imgs.length-1 ? show*span/4 : 0)*Math.cos(angle+2*Math.PI*i/imgs.length)"
             :y="(imgs.length-1 ? show*span/4 : 0)*Math.sin(angle+2*Math.PI*i/imgs.length)"
-            :z="show*130"
+            :z="show*20"
             :lag="0.1"
             inline left="50%" top="50%" />
     </div>

@@ -13,7 +13,7 @@
     }>(), {
         left: '', top: '',
         x: 0, y: 0,
-        z: 100,
+        z: 2,
         crop: false,
         fill: 'red',
         damp:0.1,
@@ -85,8 +85,8 @@
                     'green':'background-color:#34A853',
                     'blue':'background-color:#4285F4'
                 }[fill] || `background-image:url(${fill})`};
-                width:${z}px;
-                height:${z}px;
+                width:${z}vmin;
+                height:${z}vmin;
                 ${left ? `left:calc(${left});` : ''}
                 ${top ? `top:calc(${top});` : ''}
                 transform: translate(
@@ -105,8 +105,8 @@
                 'green':'background-color:#34A853',
                 'blue':'background-color:#4285F4'
             }[fill] || `background-image:url(${fill})`};
-            width:${z}px;
-            height:${z}px;
+            width:${z}vmin;
+            height:${z}vmin;
             ${left ? `left:calc(${left});` : ''}
             ${top ? `top:calc(${top});` : ''}
             transform: translate(
