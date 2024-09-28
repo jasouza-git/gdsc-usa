@@ -1,34 +1,60 @@
 @startuml
-[<b>Titlecard</b>\nwhite?:boolean] as Titlecard
-[<b>GDSC</b>\ntitle?:string\ntransparent?:boolean] as GDSC
-[<b>Block</b>\nimg?string\nw?:number\nh?:number] as Block
-[<b>Bubbles</b>\namount?:number\ncolors:Colors\nimgOff?:number\nbubOff?:number\ndurVar?:number\ndurOff?:number] as Bubbles
-[<b>Deck</b><i>(Incomplete)</i>] as Deck
-[<b>Form</b><i>(Incomplete)</i>] as Form
-[<b>Slider</b><i>(Incomplete)</i>] as Slider
-[<b>Bubble</b>] as Bubble
-[<b>Card</b>\nmember: {\n name:string\n position:string\n avatar?:string\n color?:string\n summary?:string\n fbLink?:string\n lnLink?:string\n itLink\n}] as Card
-[<b>DateField</b>\nrounded:boolean\ndensity?:string\nmin?:Date\nmax?:Date\nvariant?:string\nrules?:function] as DateField
-
-Titlecard --> GDSC : uses
-GDSC --> Block : includes
-Block --> Bubbles : includes
-Block --> Deck : includes
-Block --> Form : includes
-Block --> Slider : includes
-Bubble --> Bubbles : uses
-DateField --> Form : uses
-Card --> Deck : uses
-
-note right of Titlecard
-  Displays the GDSC Logo,
-  Name, and School
-end note
-
-note right of GDSC
-  The main website
-  of GDSC
-end note
-
-footer These are the components located at "/components"
+package components <<Frame>> {
+  map "**Logo**" as Logo {
+    ""nw,ne,sw,se""//:string// => Color of shape
+    ""blur""//:number// => Blur distance in pixels
+    ""w,h""//:string// => Logo dimension in css unit
+    ""border""//:boolean// => Border mode, no fill
+    ""loading""//:boolean// => Loading animation mode
+    ""dark""//:boolean|null// => B&W mode
+    ""show""//:"both","left","right"// => Part of the logo to show
+  }
+  map "**Block**" as Block {
+    ""img""//:string// => Background image
+    ""cols,xl,lg,md,sm,xs""//:string// => Colums of block based on width
+    ""parallax""//:number// => Parallax effect (default 0.5)
+    ""notag""//:boolean// => No top tag
+    ""dark""//:boolean// => Dark mode
+  }
+  map "**GDSC**" as GDSC {
+    ""title""//:string// => Webpage title
+    ""transparent""//:boolean// => Head is transparent
+  }
+  map "**Paragraph**" as Paragraph {
+    ""no""//:number// => Paragraph number (auto)
+    ""head""//:string// => Head of Paragraph
+    ""body""//:string// => Body of Paragraph
+    ""landing""//:boolean// => Landing page mode
+  }
+  map "**Bubble**" as Bubble {
+    ""left,top""//:string// => CSS Position
+    ""x,y""//:number// => Offset in ""vw""
+    ""z""//:number// => Circle radius
+    ""crop""//:boolean// => Crop outside parent
+    ""fill""//:string// => Fill color or image
+    ""damp""//:number// => Damping factor (0 to 1)
+    "lag""//:number// => Scroll lagging factor (0 to 1)
+    ""inline""//:boolean// => Inline not absolute
+    ""speed""//:number// => Animation speed
+    ""back""//:boolean// => Display has background
+  }
+  map "**Bubbles**" as Bubbles {
+    ""amount""//:number// => Number of bubbles
+    ""span""//:number// => Dispersion of bubbles (vw)
+    ""img""//:strings// => Images split by ","
+  }
+  map "**Slider**" as Slider {
+  }
+  map "**Slide**" as Slide {
+    ""img""//:string// => Cover image
+    ""head""//:string// => Title
+    ""date""//:string// => Date
+  }
+  Logo --> GDSC : Uses
+  GDSC --> Paragraph : ""inject(paragraph)""
+  Bubble --> Bubbles : Uses
+  GDSC --> Bubble : ""inject(mouse)""
+  GDSC --> Block : ""inject(mouse,pagedim)""
+  Slide --> Slider : Uses
+}
 @enduml
